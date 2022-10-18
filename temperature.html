@@ -1,0 +1,70 @@
+<!--página web que te pida los grados en una unidad de medida y los pasará a otra unidad y un botón (de ºC a Kelvin )
+que diga calcular
+hay que validar los dos inpputs 
+si no se meten números también saltar alerta
+poner un tipo Number
+y solo hay que poner uno de los inputs
+sacar el input submit fuera del form y poner un botón
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora temperatura</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function validateInputs() {
+
+            let name = document.forms["tempForm"]["cels"].value;
+            let name2 = document.forms["tempForm"]["kelv"].value;
+            if (name == "" && name2 == "") {
+                alert("Debes rellenar al menos un campo");
+                return false;
+            }
+
+            return true;
+        }
+
+        function calculateTemperature() {
+            let cel = parseFloat(document.getElementById("celsius").value);
+            let kel = document.getElementById("kelvin").value;
+            let num = 273.15;
+            //poner dos comprobaciones de los dos campos, poner que haya algo en los dos campos.
+            //el valor ponerlo dentro de la etq celsius
+
+            if (cel == "") {
+                let celResult = (parseFloat(num - kel).toFixed(2));
+                alert(celResult);
+
+            } else if (kel == "") {
+                let kelResult = (parseFloat(num + cel).toFixed(2));
+                alert(kelResult);
+            }
+
+        }
+
+    </script>
+</head>
+
+
+<body>
+    <div></div>
+    <div>
+        <h1 class="title">Calculadora temperatura en ºC y Kelvin</h1>
+        <h2 class="subtitle">Introduce uno de los dos valores posibles</h2>
+        <form id="tempForm">
+            Temperatura en grados centígrado: <input type="number" id="celsius" name="cels" /> ºC<br />
+            <br />
+            Temperatura en Kelvin: <input type="number" id="kelvin" name="kelv" /> K<br />
+            <br />
+        </form>
+        <button id="btn" onclick="validateInputs()" ondblclick="calculateTemperature()">
+            Calculate
+        </button>
+    </div>
+    <div></div>
+</body>
+
+</html>
